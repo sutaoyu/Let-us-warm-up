@@ -67,7 +67,7 @@
     - Vscode远程连接服务器：https://blog.csdn.net/qq812457115/article/details/135533373
 
 - 终端管理工具：tmux
-    ◦ http://mingxinglai.com/cn/2012/09/tmux/
+    - 使用指南：http://mingxinglai.com/cn/2012/09/tmux/
 
 
 # 基础知识
