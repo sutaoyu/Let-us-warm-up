@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="kdsec-%E6%8A%80%E6%9C%AF%E6%A0%88%E4%B8%8A%E6%89%8B%E7%99%BD%E7%9A%AE%E4%B9%A6">kdsec 技术栈上手白皮书</h1>
+<!-- TOC -->
+<ul>
+<li><a href="#kdsec-%E6%8A%80%E6%9C%AF%E6%A0%88%E4%B8%8A%E6%89%8B%E7%99%BD%E7%9A%AE%E4%B9%A6">kdsec 技术栈上手白皮书</a></li>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a>
+<ul>
+<li><a href="#%E7%9B%AE%E7%9A%84">目的</a></li>
+<li><a href="#%E5%B2%97%E4%BD%8D%E5%88%92%E5%88%86">岗位划分</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B7%A5%E5%85%B7">工具</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">基础知识</a>
+<ul>
+<li><a href="#shell-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">shell 基础知识</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81linux%E5%91%BD%E4%BB%A4">常见linux命令</a></li>
+<li><a href="#python-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">python 基础知识</a>
+<ul>
+<li><a href="#%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</a></li>
+<li><a href="#%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</a></li>
+</ul>
+</li>
+<li><a href="#git-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">Git 基础知识</a>
+<ul>
+<li><a href="#%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</a></li>
+<li><a href="#%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81git-%E5%91%BD%E4%BB%A4">常见git 命令</a></li>
+</ul>
+</li>
+<li><a href="#vim-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86">vim 基础使用知识</a></li>
+<li><a href="#%E7%BB%84%E5%86%85-api-%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83">组内 API 编写规范</a></li>
+</ul>
+</li>
+<li><a href="#%E5%89%8D%E7%AB%AF">前端</a>
+<ul>
+<li><a href="#%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</a></li>
+<li><a href="#%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</a></li>
+<li><a href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E5%BB%BA%E8%AE%AE">额外的建议</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BB%B7">学习能力评价</a>
+<ul>
+<li><a href="#%E4%BB%BB%E5%8A%A11%E5%AE%9E%E7%8E%B0kdsec%E5%B0%8F%E7%BB%84%E5%8D%9A%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2">任务1：实现kdsec小组博客前端页面</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%90%8E%E7%AB%AF">后端</a>
+<ul>
+<li><a href="#%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</a></li>
+<li><a href="#%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</a></li>
+<li><a href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E5%BB%BA%E8%AE%AE">额外的建议</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BB%B7">学习能力评价</a>
+<ul>
+<li><a href="#%E4%BB%BB%E5%8A%A11%E5%AE%9E%E7%8E%B0%E4%BB%BB%E4%B8%80%E9%A2%86%E5%9F%9F%E7%9A%84%E5%9B%BE%E8%B0%B1%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1">任务1：实现任一领域的图谱检索与存储服务</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%AE%97%E6%B3%95">算法</a>
+<ul>
+<li><a href="#%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</a></li>
+<li><a href="#%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</a></li>
+<li><a href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E5%BB%BA%E8%AE%AE">额外的建议</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BB%B7">学习能力评价</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
+<li><a href="#%E4%BF%AE%E8%AE%A2%E8%AE%B0%E5%BD%95">修订记录</a></li>
+</ul>
+<h1 id="%E6%A6%82%E8%BF%B0">概述</h1>
+<h2 id="%E7%9B%AE%E7%9A%84">目的</h2>
+<ul>
+<li>帮助新入团队的学生（员工）快速熟悉组内技术栈</li>
+<li>帮助新入团队的学生（员工）进入工作角色</li>
+</ul>
+<h2 id="%E5%B2%97%E4%BD%8D%E5%88%92%E5%88%86">岗位划分</h2>
+<p>按照工作职责划分为岗位：</p>
+<ol>
+<li>前端研发岗（前端）</li>
+<li>后端研发（业务后端研发、大数据研发）</li>
+<li>算法研发（DL&amp;ML类）</li>
+</ol>
+<h1 id="%E5%B7%A5%E5%85%B7">工具</h1>
+<ul>
+<li>
+<p>服务器登录终端软件：secureCRT（推荐）、Finalshell、xShell</p>
+<ul>
+<li>secureCRT注册：https://www.cnblogs.com/lccsdncnblogs/p/17517383.html</li>
+<li>secureCT配色：https://blog.csdn.net/u014530704/article/details/78698060</li>
+</ul>
+</li>
+<li>
+<p>代码编辑器：Vscode</p>
+<ul>
+<li>Vscode远程连接服务器：https://blog.csdn.net/qq812457115/article/details/135533373</li>
+</ul>
+</li>
+<li>
+<p>终端管理工具：tmux
+◦ http://mingxinglai.com/cn/2012/09/tmux/</p>
+</li>
+</ul>
+<h1 id="%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">基础知识</h1>
+<h2 id="shell-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">shell 基础知识</h2>
+<ul>
+<li>基本的shell脚本编程编写
+<ul>
+<li>菜鸟学习<a href="https://www.runoob.com/linux/linux-shell.html">教程</a></li>
+<li>变量定义（重要）</li>
+<li>传参（重要）</li>
+<li>数组（重要）</li>
+<li>循环（重要）</li>
+</ul>
+</li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html">set 命令教程</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/">让进程在后台运行更可靠的几种方法</a></li>
+<li><a href="https://www.cnblogs.com/kaituorensheng/p/4494321.html">linux定时执行脚本</a></li>
+<li><a href="http://roclinux.cn/?p=864">bash快捷键</a></li>
+</ul>
+<h2 id="%E5%B8%B8%E8%A7%81linux%E5%91%BD%E4%BB%A4">常见linux命令</h2>
+<ul>
+<li>
+<p>linux 命令大全网址</p>
+<ul>
+<li>https://www.runoob.com/linux/linux-command-manual.html</li>
+<li>https://man.linuxde.net/</li>
+</ul>
+</li>
+<li>
+<p>务必了解文件和目录管理的命令</p>
+<ul>
+<li>ls：查看文件</li>
+<li>cd：进入目录</li>
+<li>pwd：查看当前路径</li>
+<li>mkdir：创建文件夹</li>
+<li>touch：创建文件</li>
+<li>cp：拷贝文件</li>
+<li>scp：远程拷贝文件</li>
+<li>mv：修改文件名称</li>
+<li>rm：删除文件</li>
+<li>which：查找并显示给定命令的绝对路径</li>
+<li>tar：解压缩文件</li>
+<li>find：查找文件</li>
+</ul>
+</li>
+<li>
+<p>务必了解的文本处理命令</p>
+<ul>
+<li>cat：输出文件</li>
+<li>more：全屏幕的方式按页显示文本文件的内容</li>
+<li>less：与more类似，不同的是less命令允许用户向前或向后浏览文件</li>
+<li>head：输出文本头部数据</li>
+<li>tail：输出文本尾部数据</li>
+<li>grep：文本搜索工具</li>
+<li>tr：对来自标准输入的字符进行替换、压缩和删除</li>
+<li>wc：计算数字</li>
+<li>cut：显示行中的指定部分</li>
+<li>paste：将多个文件按照列队列进行合并</li>
+<li>diff：查看文件不同</li>
+<li>sort：对结果排序</li>
+<li>uniq：用于报告或忽略文件中的重复行</li>
+<li>iconv：文本格式转换</li>
+<li><a href="https://coolshell.cn/articles/9104.html">sed</a>：文本处理必备</li>
+<li><a href="https://coolshell.cn/articles/9070.html">awk</a>：文本处理必备</li>
+</ul>
+</li>
+<li>
+<p>务必了解的系统工作命令</p>
+<ul>
+<li>top：实时动态地查看系统的整体运行情况</li>
+<li>ps：报告当前系统的进程状态</li>
+<li>kill：杀死进程</li>
+<li>history：查看历史命令</li>
+<li>curl or wget：下载资源</li>
+<li>date：查看日期</li>
+<li>echo：输出</li>
+</ul>
+</li>
+</ul>
+<h2 id="python-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">python 基础知识</h2>
+<h3 id="%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</h3>
+<ul>
+<li>基本语法</li>
+<li>python常见内置数据结构
+<ul>
+<li>list</li>
+<li>dict</li>
+<li>map</li>
+<li>set</li>
+<li>collection</li>
+</ul>
+</li>
+<li>python 文本和字节序列</li>
+<li>文件操作</li>
+<li>面向对象知识</li>
+<li>基础网络编程知识</li>
+</ul>
+<h3 id="%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</h3>
+<ul>
+<li>多线程</li>
+<li>迭代器与生成器</li>
+<li>装饰器</li>
+<li>进程间通信</li>
+</ul>
+<h3 id="%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</h3>
+<ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400">Python教程- 廖雪峰的官方网站</a></li>
+<li><a href="https://github.com/TwoWater/Python">草根学python</a></li>
+<li><a href="https://docs.python.org/zh-cn/3.7/contents.html">Python 3.7.6 中文文档</a></li>
+</ul>
+<h2 id="git-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">Git 基础知识</h2>
+<h3 id="%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</h3>
+<ul>
+<li>安装配置git</li>
+<li>使用github、gitlab进行代码管理(git clone、git status)</li>
+<li>git创建分支(git brach)</li>
+<li>git提交程序(git add、git rm、git commit、git push、git pull)</li>
+<li>版本管理（git reset、git checkout）</li>
+</ul>
+<h3 id="%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</h3>
+<ul>
+<li>代码合并（git diff、git merge、git rebase）</li>
+<li>日志管理（git log、git reflog）</li>
+<li>打标签（git tag）</li>
+</ul>
+<h3 id="%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</h3>
+<ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰：Git 基础教程</a></li>
+<li><a href="https://git-scm.com/book/zh/v2">官方git 说明</a></li>
+<li>GUI客户端可使用<a href="https://www.liaoxuefeng.com/wiki/896043488029600/1317161920364578">sourcetree</a>(推荐)</li>
+</ul>
+<h3 id="%E5%B8%B8%E8%A7%81git-%E5%91%BD%E4%BB%A4">常见git 命令</h3>
+<ul>
+<li>git init</li>
+<li>git clone</li>
+<li>git remote add origin ***.git</li>
+<li>git push -u origin master</li>
+<li>推送到远程仓库的dev分支：git push origin dev</li>
+<li>git log</li>
+<li>git log --graph --pretty=oneline --abbrev-commit</li>
+<li>git status</li>
+<li>git diff</li>
+<li>git add *</li>
+<li>git commit -m &quot;message&quot;</li>
+<li>commit之后又改了一个小bug，但是又不想增加一个commit，可以用：git commit --amend --no-edit，直接将改动添加到上一次的commit中</li>
+<li>git push</li>
+<li>git pull</li>
+<li>touch .gitignore</li>
+</ul>
+<h2 id="vim-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86">vim 基础使用知识</h2>
+<ul>
+<li>vim 的基本配置</li>
+<li>vim 进行文本的添删改查</li>
+<li>从头到尾练习<a href="https://coolshell.cn/articles/5426.html">简明 VIM 练级攻略</a></li>
+</ul>
+<h2 id="%E7%BB%84%E5%86%85-api-%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83">组内 API 编写规范</h2>
+<p><a href="api.md">组内API编写规范</a></p>
+<h1 id="%E5%89%8D%E7%AB%AF">前端</h1>
+<ul>
+<li>学生背景：只有薄弱后端研发基础甚至零基础的研一学生，有过简单html/css编程基础，熟悉简单的linux操作命令，有git使用经验</li>
+<li>目标：帮助该学生尽可能上手组内的前端项目技术栈，2个月内能开发前端小型功能模块（eg：对接后端接口，开发支持不同搜索条件的检索单页面，可对检索结果进行分页、排序）</li>
+</ul>
+<h2 id="%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</h2>
+<ul>
+<li>掌握html、css，会进行简单的排版</li>
+<li>掌握Javascript(ES6)语法</li>
+<li>学会使用webstorm 或vs code进行开发环境搭建</li>
+<li>js操作dom 和jQuery</li>
+<li>使用Vue构建基本应用</li>
+<li>学会ajax 掌握网络传输协议</li>
+<li>学会debug Chrome浏览器调试</li>
+<li>异步/同步编程方式，及ES7的async await的使用</li>
+<li>前端的webpack、npm、yarn等工具链</li>
+<li>熟练使用Python，用flask构建简单的后端</li>
+</ul>
+<h2 id="%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</h2>
+<ul>
+<li>掌握1-2个框架，先学会bootstrap,并学会开发个简单应用</li>
+<li>深入学习js 如this指向，es6特性</li>
+<li>深入学习vue 特性或react特性</li>
+<li>熟悉ant design Vue版本的api并能构建应用</li>
+<li>掌握vuex、vue-router插件的使用</li>
+<li>常用设计模式</li>
+<li>了解MVC及MVVM</li>
+<li>编译原理及Vue等框架的工作原理</li>
+<li>less、sass等css拓展与语法</li>
+<li>掌握单元测试的编写</li>
+<li>熟悉cytoscape的api并能构建图应用</li>
+<li>熟悉echart、d3.js等库并能构建可视化组件</li>
+<li>webpack原理及配置</li>
+<li>RESTful接口规则</li>
+</ul>
+<h2 id="%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</h2>
+<ul>
+<li><a href="https://www.runoob.com/">菜鸟教程</a>：先入门 html js jQuery vue等</li>
+<li>书籍：javasrcipt权威指南</li>
+<li><a href="https://www.w3school.com.cn/html/index.asp">HTML教程</a></li>
+<li><a href="http://www.imooc.com/learn/9">HTML-CSS基础教程</a></li>
+<li><a href="http://www.imooc.com/learn/36">JavaScript基础教程</a></li>
+<li><a href="https://es6.ruanyifeng.com">ES6标准入门</a></li>
+<li><a href="http://www.imooc.com/course/list?c=sassless">Less、Sass入门</a></li>
+<li><a href="https://vuejs.org/v2/api/">Vue源码</a></li>
+<li><a href="https://ustbhuangyi.github.io/vue-analysis/v2/prepare/">Vue源码解读</a></li>
+<li><a href="https://vuex.vuejs.org/zh/guide/">Vuex教程</a></li>
+<li><a href="https://router.vuejs.org/zh/guide/">Vue-router教程</a></li>
+<li><a href="https://www.antdv.com/">Ant design Vue版文档</a></li>
+<li><a href="https://js.cytoscape.org">Cytoscape图可视化库文档</a></li>
+</ul>
+<h2 id="%E9%A2%9D%E5%A4%96%E7%9A%84%E5%BB%BA%E8%AE%AE">额外的建议</h2>
+<ul>
+<li>要动手练习，比如自己定一个目标（比如带数据库的TODO-list），使用上述技术栈构建一个前后端分离、MVVM、ES6、使用webpack/npm/yarn等工具链，完成一个页面布局精美、功能齐全的基础应用</li>
+<li>以实际项目上手，效果更好一些，可能干巴巴的看些书籍，资料可能效果不佳。</li>
+<li>最好以实际的例子，应用入手，如开发一个小型管理系统等。逐步丰富。</li>
+</ul>
+<h2 id="%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BB%B7">学习能力评价</h2>
+<h3 id="%E4%BB%BB%E5%8A%A11%E5%AE%9E%E7%8E%B0kdsec%E5%B0%8F%E7%BB%84%E5%8D%9A%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2">任务1：实现kdsec小组博客前端页面</h3>
+<p>核心要求如下：</p>
+<ul>
+<li><input type="checkbox" id="checkbox0"><label for="checkbox0">网页界面至少包括：主页、概况、成员、论著、项目、资源、动态等部分</label></li>
+<li><input type="checkbox" id="checkbox1"><label for="checkbox1">支持文章的编辑、修改、发布等功能</label></li>
+<li><input type="checkbox" id="checkbox2"><label for="checkbox2">支持文件的上传</label></li>
+<li><input type="checkbox" id="checkbox3"><label for="checkbox3">支持pdf、word、ppt的在线预览</label></li>
+<li><input type="checkbox" id="checkbox4"><label for="checkbox4">支持视频的在线播放</label></li>
+</ul>
+<h1 id="%E5%90%8E%E7%AB%AF">后端</h1>
+<ul>
+<li>学生背景：只有薄弱后端研发基础甚至零基础的研一学生，会利用python进行简单脚本的编写，熟悉简单的linux操作命令，有git使用经验</li>
+<li>目标：帮助该学生尽可能上手组内的后端项目技术栈，2个月内能开发后端接口小型功能模块（eg：针对mysql中的公文数据，实现某条公文的添删改查接口）</li>
+</ul>
+<h2 id="%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</h2>
+<ul>
+<li>Linux 知识
+<ul>
+<li>Linux基本命令，尤其是ssh命令要会用，以及kill，top，ps，iptables等等服务器管理命令</li>
+<li>Linux用户，权限等</li>
+</ul>
+</li>
+<li>Git的使用，尤其是分支功能的使用</li>
+<li>熟悉SQL语言基本编写</li>
+<li>书写mysql数据库的使用</li>
+<li><a href="https://fastapi.tiangolo.com/tutorial/request-files/">FastApi后端框架</a>，是整个后台的基石，必须掌握</li>
+<li>Sqlalchemy的使用，增删查改</li>
+<li>Python：virtualenv的使用，为项目搭建虚拟环境；requests模块发送http请求</li>
+<li>Postman的使用</li>
+<li>单元测试，python单元测试框架pytest</li>
+<li>Web项目架构，基于HTTP协议的前后端交互流程</li>
+<li>RESTful接口设计与规范</li>
+</ul>
+<h2 id="%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</h2>
+<ul>
+<li>Web服务器gunicorn</li>
+<li>python-kafka的基本用法</li>
+<li>任意一种爬虫框架，scrapy,xpaw等等，都大同小异，重点是要了解爬虫框架的整体工作流程</li>
+<li>Docker的使用，有些工具提供了docker版</li>
+<li>熟悉ElasticSearch的基本使用</li>
+<li>熟悉neo4j Cypher语言对图数据库进行CUID操作</li>
+<li>数据Nebula Graph数据库的使用</li>
+<li>Pdb的使用，python的debug工具，定位bug十分方便</li>
+<li>单机并发解决方案，多进程，多线程，协程，python GIL</li>
+<li>前端模块化开发，VUE框架，webpack</li>
+<li>软件开发设计模式</li>
+<li>软件架构方法论，C4模型</li>
+</ul>
+<h2 id="%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</h2>
+<ul>
+<li>官方文档是最好的学习资源！建议要这个工具的官网去看Tutorial和Docs，要习惯看英文文档</li>
+<li>博客是次好的资源，尤其是他人踩过的坑，CSDN，知乎，简书等等，都可以</li>
+<li>谷歌大法好，遇过问题先去搜索一下，90%的问题都可以从谷歌上找到解决方法</li>
+<li>百度大法好，如果谷歌用着不方便的话，百度也可以用，搜中文的话，百度结果会更好</li>
+</ul>
+<h2 id="%E9%A2%9D%E5%A4%96%E7%9A%84%E5%BB%BA%E8%AE%AE">额外的建议</h2>
+<ul>
+<li>多动手写例子，光看是学不会的</li>
+<li>配环境既重要，又麻烦，要多动手去配环境</li>
+<li>系统性学习：
+推荐书籍，系列博客，付费专栏等，但不推荐通过购买书籍等方式学习开源系统和框架，这些东西会升级更新换代，书籍适合学习相对不过时的知识，比如设计模式等。</li>
+<li>解决问题：最快的办法是搜索，包括中文和英文，github issue等，深入解决问题的办法是文档和源码。</li>
+</ul>
+<h2 id="%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BB%B7">学习能力评价</h2>
+<h3 id="%E4%BB%BB%E5%8A%A11%E5%AE%9E%E7%8E%B0%E4%BB%BB%E4%B8%80%E9%A2%86%E5%9F%9F%E7%9A%84%E5%9B%BE%E8%B0%B1%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1">任务1：实现任一领域的图谱检索与存储服务</h3>
+<p>核心要求如下：</p>
+<ul>
+<li><input type="checkbox" id="checkbox5"><label for="checkbox5">图谱实体数量不少于50万</label></li>
+<li><input type="checkbox" id="checkbox6"><label for="checkbox6">能够实现实体的添加、删除、修改功能</label></li>
+<li><input type="checkbox" id="checkbox7"><label for="checkbox7">能够实现实体的添加、删除、修改功能</label></li>
+<li><input type="checkbox" id="checkbox8"><label for="checkbox8">能够实现基于关键词对实体名称进行检索</label></li>
+<li><input type="checkbox" id="checkbox9"><label for="checkbox9">任一接口请求返回时间不高于100ms</label></li>
+<li><input type="checkbox" id="checkbox10"><label for="checkbox10">包含所有接口的测试用例</label></li>
+<li><input type="checkbox" id="checkbox11"><label for="checkbox11">能够以简单可视化形式对接口进行功能展示</label></li>
+</ul>
+<h1 id="%E7%AE%97%E6%B3%95">算法</h1>
+<ul>
+<li>学生背景：本科毕业有一定基础的研一学生或者低年级直博研究生，会利用python进行中等难度脚本的编写，熟悉常见的linux操作命令，有git使用经验，了解过ML、DL的相关知识，但缺乏某一种深度学习框架（TF、pytorch等）进行模型训练的实战经验</li>
+<li>目标：帮助该学生尽可能上手组内的算法技术栈，2个月内可以针对组内某个需求，从0到1开发出简单算法接口（eg：给定足量标注后的不同类别新闻数据，经过训练之后，实现新闻类别判断的API接口）</li>
+</ul>
+<h2 id="%E5%BF%85%E9%A1%BB%E5%AD%A6%E4%BC%9A%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9">必须学会的知识点</h2>
+<ul>
+<li>神经网络与深度学习基础知识（概念及原理）
+<ul>
+<li>前馈神经网络</li>
+<li>卷积神经网络</li>
+<li>循环神经网络</li>
+<li>激活函数</li>
+<li>梯度回传</li>
+<li>感知机模型</li>
+<li>Logistic模型</li>
+</ul>
+</li>
+<li>面向自然语言处理的深度学习（原理及应用）
+<ul>
+<li>注意力机制</li>
+<li>词向量</li>
+<li>预训练表示模型</li>
+<li>序列标注模型</li>
+</ul>
+</li>
+<li>各类损失函数的用法
+<ul>
+<li>交叉熵</li>
+<li>合页损失</li>
+<li>均方损失</li>
+<li>三元组损失</li>
+</ul>
+</li>
+<li>神经网络参数调整方法
+<ul>
+<li>初始化</li>
+<li>学习率</li>
+<li>dropout</li>
+<li>各种Normalization方法（BN、LN等）</li>
+</ul>
+</li>
+<li>pytorch
+<ul>
+<li>pytorch的基本用法（能够熟练掌握基本API的使用）</li>
+<li>pytorch模型的训练、测试、封装与调用</li>
+<li>pytorch模型的服务部署</li>
+</ul>
+</li>
+<li>常见自然语言处理工具的使用，包括但不限于LTP，CoreNLP，jieba，fastNLP等</li>
+<li>学会灵活使用Google、Stack Overflow进行Debug</li>
+</ul>
+<h2 id="%E6%8B%94%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9">拔高知识点</h2>
+<ul>
+<li>常见ML&amp;DL基本算法的原理
+<ul>
+<li>支持向量机</li>
+<li>贝叶斯理论</li>
+<li>集成学习方法</li>
+<li>注意力机制</li>
+<li>fasttext</li>
+<li>预训练语言模型</li>
+</ul>
+</li>
+<li>pytorch_pretrained_bert 包的使用（使用0.6.2版本完成Mrpc数据分类）</li>
+<li>numpy 的使用方法和基本API</li>
+<li>尝试阅读ACL、EMNLP、AAAI、IJCAI等顶会的NLP论文，逐渐形成NLP的知识体系</li>
+</ul>
+<h2 id="%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">学习资源</h2>
+<ul>
+<li>自然语言处理入门练习，https://github.com/FudanNLP/nlp-beginner</li>
+<li>吴恩达 机器学习系列课程CS229 https://www.coursera.org/learn/machine-learning</li>
+<li>《神经网络与深度学习》，邱锡鹏， 重点学习1、3.1、3.2、3.3、4-8章，https://nndl.github.io/</li>
+<li>《机器学习与深度学习》李宏毅，https://www.bilibili.com/video/BV1JE411g7XF</li>
+<li>李航《统计学习方法》（小蓝书）https://item.jd.com/12522197.html</li>
+<li>周志华《机器学习》（西瓜书） https://item.jd.com/11867803.html</li>
+<li>GoodFellow《深度学习》（花书）https://item.jd.com/12128543.html</li>
+<li>邱锡鹏《神经网络与深度学习》https://item.jd.com/12851292.html</li>
+<li>王斌《机器学习实战》https://item.jd.com/11242112.html</li>
+<li>IBM出品：<a href="https://github.com/IBM/pytorch-seq2seq">pytorch seq2seq示例代码</a></li>
+<li><a href="https://github.com/bamtercelboo/cnn-lstm-bilstm-deepcnn-clstm-in-pytorch">pytorch实现文本分类</a></li>
+<li><a href="https://morvanzhou.github.io/tutorials/machine-learning/torch/">莫烦pytorch教程</a></li>
+</ul>
+<h2 id="%E9%A2%9D%E5%A4%96%E7%9A%84%E5%BB%BA%E8%AE%AE">额外的建议</h2>
+<ul>
+<li>使用LaTeX或Markdown整理学习笔记，同步更新到个人主页中（可使用github.io构建），笔记格式参见 https://github.com/Sakura-gh/ML-notes</li>
+<li>阅读论文首先今三年定会论文开始看起，不要贪多求全，以打牢基础作为第一目标</li>
+<li>阅读相关基础论文，培养从经典与前沿论文中汲取的能力</li>
+<li>努力写出整洁、优雅、可读、可复用的代码</li>
+</ul>
+<h2 id="%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B%E8%AF%84%E4%BB%B7">学习能力评价</h2>
+<p>待定</p>
+<h1 id="%E7%BB%93%E8%AF%AD">结语</h1>
+<ul>
+<li>版权由中国科学院信息工程研究所第五研究室kdsec小组所有，未经允许禁止任何其它形式的使用</li>
+<li>受时间和能力限制，难免有不足之处，欢迎大家批评指正。</li>
+<li>意见反馈邮箱：sutaoyu@iie.ac.cn</li>
+</ul>
+<h1 id="%E4%BF%AE%E8%AE%A2%E8%AE%B0%E5%BD%95">修订记录</h1>
+<ul>
+<li>v1 2020.05 初稿
+<ul>
+<li>初稿各部分内容由下列kdsec小组成员提供了建设性意见，向各位表示诚挚的感谢（排名不分前后，以拼音顺序为准）：
+<ul>
+<li>基础知识：苏涛宇</li>
+<li>前端部分：李彦增、穆红章</li>
+<li>后端部分：从鑫、王玉斌</li>
+<li>算法部分：王栋、郁博文、张振宇</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>v1.1 2021.06 修改部分错误</li>
+<li>v1.2 2023.07 删除过时内容</li>
+<li>v1.3 2024.12 增加工具使用</li>
+</ul>
+
+</body>
+</html>
